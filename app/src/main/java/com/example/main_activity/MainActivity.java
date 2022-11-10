@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setContentView(R.layout.activity_register_page);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
     }
 
     @Override

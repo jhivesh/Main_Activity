@@ -10,8 +10,10 @@
     <string name="EnterHeightMessage">Enter Height (m) </string>
     <string name="Register"> Register</string>
     <string name="Login">Go to Login</string>
+    <string name="fitness_app">Fitness app</string>
+    <string name="workout">Workout</string>
+    <string name="Calendar">Calendar</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 
-    <workout>
-        <string name="workout_name">Classic</string>
-    </workout>
 </resources>
