@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Main_Activity</string>
+    <string name="bmi">BMI Calculator</string>
+    <string name="BtnBMI">Calculate BMI</string>
+    <string name="BMI_holder">The BMI/KG is :</string>
+    <string name="BMI_textview">00.00</string>
+    <string name="weight_input">63.90</string>
+    <string name="height_input">1.90</string>
+    <string name="EnterWeightMessage">Enter Weight (Kg)</string>
+    <string name="EnterHeightMessage">Enter Height (m) </string>
+    <string name="Register"> Register</string>
+    <string name="Login">Go to Login</string>
+
+    <workout>
+        <string name="workout_name">Classic</string>
+    </workout>
+</resources>
