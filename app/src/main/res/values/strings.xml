@@ -15,5 +15,7 @@
     <string name="Calendar">Calendar</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="calendar_fragment">calendar fragment</string>
 
 </resources>
