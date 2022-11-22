@@ -24,6 +24,10 @@ public class workoutFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+
+
+
     public workoutFragment() {
         // Required empty public constructor
     }
@@ -53,6 +57,7 @@ public class workoutFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
