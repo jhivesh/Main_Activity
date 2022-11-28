@@ -1,12 +1,16 @@
 package com.example.main_activity;
 
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +18,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class workoutFragment extends Fragment {
+
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +31,7 @@ public class workoutFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    RecyclerView recyclerView;
 
 
 
@@ -58,8 +66,13 @@ public class workoutFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
     }
 
+
+
+
+    // inflater parameter infalte the layout, cont
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

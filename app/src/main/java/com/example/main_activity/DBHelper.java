@@ -61,7 +61,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON UPDATE SET NULL);"
                 );
         String date2 = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        insertExercise(myDB,date2,"Jumping Jack", "" + "1. Stand upright with your legs together, arms at your sides.\n" +
+        insertWorkout(myDB, date2, "Classic workout","This is a home workout, description...");
+        insertExercise(myDB,date2,"Jumping Jack", "" + "Stand upright with your legs together, arms at your sides.\n" +
                 "2. Bend your knees slightly, and jump into the air.\n");
 
         insertExercise(myDB,date2,"Push-up", "instruction a" );
@@ -110,6 +111,13 @@ public class DBHelper extends SQLiteOpenHelper {
         content_exercise.put("instruction", instruction);
         content_exercise.put("date_created", date_created);
         db.insert("exercise",null,content_exercise);
+    }
+
+    public Cursor readWorkout(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String qry = "select * from workout";
+        Cursor cursor = db.rawQuery(qry,null);
+        return cursor;
     }
 
 
