@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
  public class CardWorkoutAdapter extends
          RecyclerView.Adapter<CardWorkoutAdapter.ViewHolder>{
 
-    private String[] workoutname;
+    private String[] workout_Name;
     private int[] imageID;
     private String[] instruction;
 
@@ -27,15 +27,15 @@ import androidx.recyclerview.widget.RecyclerView;
     }
 
 
-    public CardWorkoutAdapter (String[] workoutname, int[] imageID, String[] instruction){
-        this.workoutname= workoutname;
+    public CardWorkoutAdapter (String[] workout_name, int[] imageID, String[] instruction){
+        this.workout_Name= workout_name;
         this.imageID=imageID;
         this.instruction=instruction;
     }
 
     @Override
-    public int getItemCount(){
-        return workoutname.length;
+    public int getItemCount()
+    {return workout_Name.length;
     }
 
     @Override
@@ -53,9 +53,9 @@ import androidx.recyclerview.widget.RecyclerView;
         Drawable drawable =
                 ContextCompat.getDrawable(cardView.getContext(), imageID[position]);
         imageView.setImageDrawable(drawable);
-        imageView.setContentDescription(workoutname[position]);
+        imageView.setContentDescription(workout_Name[position]);
         TextView textView = (TextView)cardView.findViewById(R.id.info_text);
-        textView.setText(workoutname[position]);
+        textView.setText(workout_Name[position]);
     }
 
 
