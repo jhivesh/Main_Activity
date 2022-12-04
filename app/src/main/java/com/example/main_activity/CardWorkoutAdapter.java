@@ -1,5 +1,6 @@
 package com.example.main_activity;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,12 +11,16 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
- public class CardWorkoutAdapter extends
+import java.util.ArrayList;
+import java.util.List;
+
+public class CardWorkoutAdapter extends
          RecyclerView.Adapter<CardWorkoutAdapter.ViewHolder>{
 
     private String[] workout_Name;
     private int[] imageID;
     private String[] instruction;
+
 
     public static class ViewHolder extends  RecyclerView.ViewHolder{
         private CardView cardView;
@@ -26,16 +31,16 @@ import androidx.recyclerview.widget.RecyclerView;
         }
     }
 
+    private ArrayList<Workout> mArrayWorkout;
 
-    public CardWorkoutAdapter (String[] workout_name, int[] imageID, String[] instruction){
-        this.workout_Name= workout_name;
-        this.imageID=imageID;
-        this.instruction=instruction;
+
+    public CardWorkoutAdapter (Context context, ArrayList<Workout> workoutList){
+        mArrayWorkout = workoutList;
     }
 
     @Override
     public int getItemCount()
-    {return workout_Name.length;
+    {return mArrayWorkout.size();
     }
 
     @Override
@@ -48,17 +53,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
+        Workout workout = mArrayWorkout.get(position);
+        String name = workout.getName();
+        String Description = workout.getDescription();
+
         CardView cardView = holder.cardView;
+
         ImageView imageView = (ImageView)cardView.findViewById(R.id.info_image);
-        Drawable drawable =
-                ContextCompat.getDrawable(cardView.getContext(), imageID[position]);
-        imageView.setImageDrawable(drawable);
-        imageView.setContentDescription(workout_Name[position]);
+        //Drawable drawable =
+//                ContextCompat.getDrawable(cardView.getContext(), imageID[position]);
+        //imageView.setImageDrawable(drawable);
+        //imageView.setContentDescription(workout_Name[position]);
         TextView textView = (TextView)cardView.findViewById(R.id.info_text);
-        textView.setText(workout_Name[position]);
+        //textView.setText(workout_Name[position]);
+        textView.setText(name);
+
+        TextView textView1 = (TextView)cardView.findViewById(R.id.description_id);
+        textView1.setText(Description);
     }
-
-
 
 
 }

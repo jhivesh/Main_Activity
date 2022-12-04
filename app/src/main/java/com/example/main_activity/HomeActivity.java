@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     ViewPager2 pager2;
     TabLayout mTabLayout;
     TabItem Workout, Calendar;
-
+    String [] arr = {"Workout", "Calendar"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
                 new TabLayoutMediator.TabConfigurationStrategy() {
                     @Override
                     public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText("Tab :"+ (position +1));
+                        tab.setText(arr[position]);
 
                     }
                 }

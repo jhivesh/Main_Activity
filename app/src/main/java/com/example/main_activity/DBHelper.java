@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -103,7 +105,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Classic_workout.put("date_created", date);
         Classic_workout.put("description", description);
         db.insert("workout", null, Classic_workout);
-    };
+    }
 
     private static void insertExercise(SQLiteDatabase db, String date_created, String name, String instruction ){
         ContentValues content_exercise = new ContentValues();
@@ -120,8 +122,58 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public List<Workout> getEveryone(){
+        List <Workout> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM workout";
 
+        SQLiteDatabase db = this.getReadableDatabase();
 
+        Cursor cursor = db.rawQuery(queryString, null);
+        try{
+            if(cursor.moveToFirst()){
+
+                do {
+
+                    String workoutName = cursor.getString(1);
+                    String workoutDescription = cursor.getString(2);
+                    int workoutID = cursor.getInt(0);
+
+                    Workout newWorkout = new Workout(workoutName,workoutID,workoutDescription);
+                    returnList.add(newWorkout);
+                }while (cursor.moveToNext());
+
+            }else{
+                //failure do not add anything to the list .
+            }
+        }catch (Exception e){
+            Log.d("ERROR", "Error while trying to get post from database");
+        }finally {
+            if (cursor != null && cursor.isClosed()){
+                cursor.close();
+            }
+        }
+
+        //close bth cursor
+
+        db.close();
+        return  returnList;
+    }
+
+    public String[] getWorkouts(){
+        String[] LikeWorkout = null;
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        String queryString = "SELECT * FROM workout";
+        Cursor cursor = myDB.rawQuery(queryString,null);
+
+        if(cursor.getCount()> 0){
+            int i = 0;
+            while(cursor.moveToNext()){
+                LikeWorkout[i] = cursor.getString(0);
+            }
+        }
+
+        return LikeWorkout;
+    }
 
     public boolean checkusername(String username) {
         SQLiteDatabase myDB = this.getWritableDatabase();
