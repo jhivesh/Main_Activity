@@ -2,6 +2,7 @@ package com.example.main_activity;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,6 +46,7 @@ public class workoutFragment extends Fragment {
 
         recView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+
 
         //workoutRecycler.setLayoutManager(layoutManager);
 

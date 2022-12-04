@@ -22,7 +22,8 @@
             android:layout_height="0dp"
             android:layout_weight="1.0"
             android:contentDescription="Workout image"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:src=""/>
 
         <TextView
             android:id="@+id/info_text"

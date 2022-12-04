@@ -60,6 +60,8 @@ public class CardWorkoutAdapter extends
         CardView cardView = holder.cardView;
 
         ImageView imageView = (ImageView)cardView.findViewById(R.id.info_image);
+        //imageView.setImageBitmap();
+
         //Drawable drawable =
 //                ContextCompat.getDrawable(cardView.getContext(), imageID[position]);
         //imageView.setImageDrawable(drawable);
