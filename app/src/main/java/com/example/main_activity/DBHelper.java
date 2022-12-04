@@ -40,11 +40,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "workout_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "name Text,"
                 + "description Text,"
+                + "imageURL Text,"
                 + "date_created Text);"
                 );
 
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        insertWorkout(myDB, date, "Classic Home Workout", "Workout designed for weight loss");
+        insertWorkout(myDB, date, "Classic Home Workout", "Workout designed for weight loss",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Exercise_Treadmill_Convey_Motion.jpg/1280px-Exercise_Treadmill_Convey_Motion.jpg");
 
         myDB.execSQL("CREATE TABLE workout_duration("
                 + "workout_id INTEGER,"
@@ -63,7 +65,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON UPDATE SET NULL);"
                 );
         String date2 = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        insertWorkout(myDB, date2, "Classic workout","This is a home workout, description...");
+        insertWorkout(myDB, date2, "Classic workout","This is a home workout, description...",
+                "https://upload.wikimedia.org/wikipedia/commons/6/6c/Man_lifting_a_heavy_barbell.jpg");
         insertExercise(myDB,date2,"Jumping Jack", "" + "Stand upright with your legs together, arms at your sides.\n" +
                 "2. Bend your knees slightly, and jump into the air.\n");
 
@@ -99,11 +102,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    private static void insertWorkout(SQLiteDatabase db,String date, String name, String description){
+    private static void insertWorkout(SQLiteDatabase db,String date, String name, String description,String imageURL){
         ContentValues Classic_workout = new ContentValues();
         Classic_workout.put("name", name);
         Classic_workout.put("date_created", date);
         Classic_workout.put("description", description);
+        Classic_workout.put("imageURL", imageURL);
         db.insert("workout", null, Classic_workout);
     }
 
@@ -136,9 +140,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
                     String workoutName = cursor.getString(1);
                     String workoutDescription = cursor.getString(2);
-                    int workoutID = cursor.getInt(0);
+                    String imageURL = cursor.getString(3);
+                    //int workoutID = cursor.getInt(0);
 
-                    Workout newWorkout = new Workout(workoutName,workoutID,workoutDescription);
+                    Workout newWorkout = new Workout(workoutName,imageURL,workoutDescription);
                     returnList.add(newWorkout);
                 }while (cursor.moveToNext());
 

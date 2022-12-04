@@ -1,7 +1,9 @@
 package com.example.main_activity;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -56,10 +58,16 @@ public class CardWorkoutAdapter extends
         Workout workout = mArrayWorkout.get(position);
         String name = workout.getName();
         String Description = workout.getDescription();
+        String imageURL = workout.getImageResourceURL();
 
         CardView cardView = holder.cardView;
 
         ImageView imageView = (ImageView)cardView.findViewById(R.id.info_image);
+        new DownloadImageTask(imageView)
+                .execute(imageURL);
+        Log.d("Download image:  ", imageURL);
+
+
         //imageView.setImageBitmap();
 
         //Drawable drawable =

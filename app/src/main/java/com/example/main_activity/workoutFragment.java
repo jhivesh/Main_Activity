@@ -37,12 +37,7 @@ public class workoutFragment extends Fragment {
         ArrayList<Workout> everyone = (ArrayList) myDB.getEveryone();
         Log.d("PRINT ARRAY", "size of arraylist "+ String.valueOf(everyone.size()));
 
-        //String[] workouts = myDB.getWorkouts();
-
         CardWorkoutAdapter adapter = new CardWorkoutAdapter(getContext(),everyone);
-
-        // Card WorkoutAdapter adapter = new CardWorkoutAdapter();
-        //workoutRecycler.setAdapter(adapter);
 
         recView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

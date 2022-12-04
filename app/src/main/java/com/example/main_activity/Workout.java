@@ -4,13 +4,16 @@ package com.example.main_activity;
 
 public class Workout {
     private String  name;
-    private int imageResourceID;
+    private String imageResourceURL;
     private String description;
 
 
     public static final Workout[] workouts = {
-            new Workout("Home workout", R.drawable.classic_1,"This is a description for classic 1"),
-            new Workout("Challenge Workout", R.drawable.classic_1,"This is a description for classic 2")
+            new Workout("Home workout",
+                    "https://upload.wikimedia.org/wikipedia/commons/6/6c/Man_lifting_a_heavy_barbell.jpg",
+                    "This is a description for classic 1"),
+            new Workout("Challenge Workout","https://upload.wikimedia.org/wikipedia/commons/6/6c/Man_lifting_a_heavy_barbell.jpg",
+                    "This is a description for classic 2")
     };
 
 
@@ -18,9 +21,9 @@ public class Workout {
 
 
 
-    public Workout(String name, int imageResourceID, String description) {
+    public Workout(String name, String imageResourceURL, String description) {
         this.name = name;
-        this.imageResourceID = imageResourceID;
+        this.imageResourceURL = imageResourceURL;
         this.description = description;
     }
 
@@ -28,8 +31,8 @@ public class Workout {
         return name;
     }
 
-    public int getImageResourceID() {
-        return imageResourceID;
+    public String getImageResourceURL() {
+        return imageResourceURL;
     }
 
     public String getDescription() {
