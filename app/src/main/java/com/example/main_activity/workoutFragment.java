@@ -22,7 +22,7 @@ public class workoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //View view = inflater.inflate(R.layout.fragment_workout, container,false);
+        ///View view = inflater.inflate(R.layout.fragment_workout, container,false);
         //recyclerview= view.findViewById(R.id.workout_recycle_id);
 
         //RecyclerView workoutRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_workout, container, false);
