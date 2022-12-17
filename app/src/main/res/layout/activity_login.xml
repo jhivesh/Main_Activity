@@ -43,7 +43,7 @@
         android:gravity="bottom"
         android:hint="Password"
         android:importantForAutofill="yes"
-        android:inputType="textWebEmailAddress|textPersonName|text"
+        android:inputType="textPassword"
         android:textColorHint="#A1887F"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"

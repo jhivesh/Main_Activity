@@ -1,5 +1,6 @@
 package com.example.main_activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -22,15 +23,9 @@ public class workoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ///View view = inflater.inflate(R.layout.fragment_workout, container,false);
-        //recyclerview= view.findViewById(R.id.workout_recycle_id);
-
-        //RecyclerView workoutRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_workout, container, false);
-        //workoutRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
         View view = inflater.inflate(R.layout.fragment_workout, container,false);
         recView = view.findViewById(R.id.workout_recycle_id);
-
         Workout workoutModel;
 
         myDB = new DBHelper(getContext());
@@ -42,15 +37,20 @@ public class workoutFragment extends Fragment {
         recView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
-
-        //workoutRecycler.setLayoutManager(layoutManager);
-
         recView.setLayoutManager(layoutManager);
+
+        adapter.setListener(new CardWorkoutAdapter.Listener() {
+            @Override
+            public void onClick(int position) {
+                Intent intent = new Intent(getActivity(), WorkoutDetailsActivity.class);
+                intent.putExtra(WorkoutDetailsActivity.string_workout_id, position);
+                getActivity().startActivity(intent);
+            }
+        });
 
 
         return recView;
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_workout, container, false);
+
     }
 
 
