@@ -48,6 +48,15 @@ public class DBHelper extends SQLiteOpenHelper {
         insertWorkout(myDB, date, "Classic Home Workout", "Workout designed for weight loss",
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Exercise_Treadmill_Convey_Motion.jpg/1280px-Exercise_Treadmill_Convey_Motion.jpg");
 
+        myDB.execSQL("CREATE TABLE exercise("
+                + "exercise_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "name Text,"
+                + "instruction Text,"
+                + "date_created Text,"
+                + "workout_id INTEGER,"
+                + "FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON UPDATE SET NULL);"
+        );
+
         myDB.execSQL("CREATE TABLE workout_duration("
                 + "workout_id INTEGER,"
                 + "duration TEXT,"
@@ -56,24 +65,22 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON UPDATE SET NULL);"
                 );
 
-        myDB.execSQL("CREATE TABLE exercise("
-                + "exercise_id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + "name Text,"
-                + "instruction Text,"
-                + "date_created Text,"
-                + "workout_id INTEGER,"
-                + "FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON UPDATE SET NULL);"
-                );
+
         String date2 = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
         insertWorkout(myDB, date2, "Classic workout","This is a home workout, description...",
                 "https://upload.wikimedia.org/wikipedia/commons/6/6c/Man_lifting_a_heavy_barbell.jpg");
-        insertExercise(myDB,date2,"Jumping Jack", "" + "Stand upright with your legs together, arms at your sides.\n" +
-                "2. Bend your knees slightly, and jump into the air.\n");
 
-        insertExercise(myDB,date2,"Push-up", "instruction a" );
-        insertExercise(myDB,date2,"Squats", "instruction a" );
-        insertExercise(myDB,date2,"Lunges", "instruction a" );
-        insertExercise(myDB,date2,"Plank", "instruction a" );
+        insertExercise(myDB,date2,
+                "Jumping Jack",
+                "Stand upright with your legs together, arms at your sides.\n" +
+                "2. Bend your knees slightly, and jump into the air.\n",
+                1 );
+
+        insertExercise(myDB,date2,  "Push-up", "instruction a",1 );
+        insertExercise(myDB,date2,"Squats", "instruction a",1 );
+        insertExercise(myDB,date2,"Lunges", "instruction a",1 );
+        insertExercise(myDB,date2,"Plank", "instruction a", 1 );
 
     }
 
@@ -111,11 +118,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert("workout", null, Classic_workout);
     }
 
-    private static void insertExercise(SQLiteDatabase db, String date_created, String name, String instruction ){
+    private static void insertExercise(SQLiteDatabase db, String date_created, String name, String instruction, Integer workout_ID){
         ContentValues content_exercise = new ContentValues();
         content_exercise.put("name", name);
         content_exercise.put("instruction", instruction);
         content_exercise.put("date_created", date_created);
+        content_exercise.put("workout_id", workout_ID);
         db.insert("exercise",null,content_exercise);
     }
 
